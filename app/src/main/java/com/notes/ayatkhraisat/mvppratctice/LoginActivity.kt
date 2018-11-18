@@ -16,3 +16,5 @@ class LoginActivity : AppCompatActivity() {
         loginBinding.user= User();
     }
 }
+
+
