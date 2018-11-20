@@ -4,6 +4,6 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/main_navigation"
             app:startDestination="@id/loginActivity">
 
-    <activity android:id="@+id/loginActivity" android:name="com.notes.ayatkhraisat.mvppratctice.LoginActivity"
-              android:label="activity_login" tools:layout="@layout/activity_login"/>
+    <activity android:id="@+id/loginActivity" android:name="com.notes.ayatkhraisat.mvppratctice.top_rated.TopRatedMoviesActivity"
+              android:label="activity_login" tools:layout="@layout/activity_movies_list"/>
 </navigation>
