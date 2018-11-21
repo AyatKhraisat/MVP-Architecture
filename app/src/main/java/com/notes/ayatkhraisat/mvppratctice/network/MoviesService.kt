@@ -5,6 +5,7 @@ import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MoviesService {
@@ -22,6 +23,7 @@ interface MoviesService {
         }
     }
 
+    @GET("/movie/top_rated/")
     fun getTopRatedMovies(@Query("api_key") apiKey: String): Single<Model.MoviesList>
 
 }
