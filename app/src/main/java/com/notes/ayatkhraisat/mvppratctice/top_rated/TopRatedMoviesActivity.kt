@@ -40,9 +40,10 @@ class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View 
 
 
     override fun showMoviesList(list: ArrayList<Model.MovieItem>) {
+        moviesListBinding.invalidateAll()
 
         moviesListBinding.rvMovies.layoutManager= LinearLayoutManager(this)
-        moviesListBinding.rvMovies.adapter=TopRatedMoviesAdapter()
+        moviesListBinding.rvMovies.adapter=TopRatedMoviesAdapter(list)
 
     }
 

@@ -16,4 +16,9 @@ interface TopRatedMoviesContract {
         fun showMoviesDetails()
     }
 
+    interface Repo{
+        fun onLoadMoviesSuccess( moviesList :ArrayList<Model.MovieItem> );
+        fun onLoadMoviesFails();
+    }
+
 }

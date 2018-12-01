@@ -11,10 +11,10 @@ import com.notes.ayatkhraisat.mvppratctice.models.Model
 
 
 
-class TopRatedMoviesAdapter : RecyclerView.Adapter<TopRatedMoviesAdapter.ViewHolder>() {
+class TopRatedMoviesAdapter(val moviesList: ArrayList<Model.MovieItem>? ) : RecyclerView.Adapter<TopRatedMoviesAdapter.ViewHolder>() {
 
 
-    private var moviesList: ArrayList<Model.MovieItem>? = null
+
 
     private lateinit var binding: MovieItemBinding
 

@@ -8,6 +8,9 @@
         <variable
                 name="movie"
                 type="com.notes.ayatkhraisat.mvppratctice.models.Model.MovieItem"/>
+
+        <import type="java.lang.String"/>
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,14 +18,23 @@
             android:layout_height="wrap_content">
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars"
+                android:layout_width="0dp"
+                android:scaleType="fitXY"
+                android:layout_height="150dp"
+                tools:srcCompat="@tools:sample/avatars"
                 android:id="@+id/iv_movie_poster"
                 android:posterImage="@{movie.posterPath}"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_title"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintDimensionRatio="w,2:3"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -41,7 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_rate"
-                android:text="@{String.valueOf(movie.voteAverage)"
+                android:text="@{String.valueOf(movie.voteAverage)}"
                 app:layout_constraintStart_toStartOf="@+id/tv_title"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title"

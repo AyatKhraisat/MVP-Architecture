@@ -9,6 +9,17 @@ import android.widget.ImageView
 
 object Model {
 
+
+	@BindingAdapter("android:posterImage")
+	@JvmStatic
+	fun loadPosterImage(view: ImageView, imageUrl: String) {
+		Glide.with(view.getContext())
+			.load(
+				"https://image.tmdb.org/t/p/w500" +
+						imageUrl
+			)
+			.into(view)
+	}
 	data class MoviesList
 		(
 
@@ -69,15 +80,7 @@ object Model {
 		@field:SerializedName("vote_count")
 		val voteCount: Int? = null
 	) {
-		@BindingAdapter("android:posterImage")
-		fun loadPosterImage(view: ImageView, imageUrl: String) {
-			Glide.with(view.getContext())
-				.load(
-					"https://image.tmdb.org/t/p/w500" +
-							imageUrl
-				)
-				.into(view)
-		}
+
 	}
 
 }
