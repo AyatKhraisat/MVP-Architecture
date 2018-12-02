@@ -13,10 +13,9 @@ object Model {
 	@BindingAdapter("android:posterImage")
 	@JvmStatic
 	fun loadPosterImage(view: ImageView, imageUrl: String) {
-		Glide.with(view.getContext())
+		Glide.with(view.context)
 			.load(
-				"https://image.tmdb.org/t/p/w500" +
-						imageUrl
+				"https://image.tmdb.org/t/p/w500$imageUrl"
 			)
 			.into(view)
 	}
