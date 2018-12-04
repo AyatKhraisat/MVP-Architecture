@@ -5,19 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.notes.ayatkhraisat.mvppratctice.R
+import com.notes.ayatkhraisat.mvppratctice.base.BaseActivity
 import com.notes.ayatkhraisat.mvppratctice.databinding.ActivityMoviesListBinding
 import com.notes.ayatkhraisat.mvppratctice.models.Model
+import javax.inject.Inject
 
-class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View {
+class TopRatedMoviesActivity : BaseActivity(), TopRatedMoviesContract.View {
 
 
-
-    private lateinit var repository : TopRatedMoviesRepository
-    private lateinit var presenter: TopRatedMoviesPresenter
+    private lateinit var repository: TopRatedMoviesRepository
+    @Inject
+    protected lateinit var presenter: TopRatedMoviesPresenter
     private lateinit var moviesListBinding: ActivityMoviesListBinding
-
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +26,8 @@ class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View 
             this,
             R.layout.activity_movies_list
         )
-        repository=TopRatedMoviesRepository(this)
-        presenter =TopRatedMoviesPresenter(repository,this)
+        repository = TopRatedMoviesRepository(this)
+        presenter = TopRatedMoviesPresenter(repository, this)
 
         presenter.loadMoviesList()
 
@@ -42,8 +41,8 @@ class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View 
     override fun showMoviesList(list: ArrayList<Model.MovieItem>) {
         moviesListBinding.invalidateAll()
 
-        moviesListBinding.rvMovies.layoutManager= LinearLayoutManager(this)
-        moviesListBinding.rvMovies.adapter=TopRatedMoviesAdapter(list)
+        moviesListBinding.rvMovies.layoutManager = LinearLayoutManager(this)
+        moviesListBinding.rvMovies.adapter = TopRatedMoviesAdapter(list)
 
     }
 
