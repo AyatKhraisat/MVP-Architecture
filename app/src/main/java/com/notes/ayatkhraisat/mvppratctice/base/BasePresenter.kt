@@ -21,10 +21,10 @@ class BasePresenter {
     protected var activityComponent: ActivityComponent<*>? = null
 
 
-    val component: ActivityComponent<*>
-        @UiThread
-        get() = if (activityComponent != null) activityComponent else ((context as AppCompatActivity).application as App).applicationComponent.getPresenterComponent(
-            ActivityModule(this)
-        )
+//    val component: ActivityComponent<*>
+//        @UiThread
+//        get() = if (activityComponent != null) activityComponent else ((context as AppCompatActivity).application as App).applicationComponent.getPresenterComponent(
+//            ActivityModule(this)
+//        )
 
 }

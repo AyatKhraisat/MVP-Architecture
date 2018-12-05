@@ -1,16 +1,21 @@
 package com.notes.ayatkhraisat.mvppratctice.top_rated
 
 import android.os.Bundle
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.notes.ayatkhraisat.mvppratctice.App
 import com.notes.ayatkhraisat.mvppratctice.R
 import com.notes.ayatkhraisat.mvppratctice.base.BaseActivity
 import com.notes.ayatkhraisat.mvppratctice.databinding.ActivityMoviesListBinding
+import com.notes.ayatkhraisat.mvppratctice.di.ActivityComponent
+import com.notes.ayatkhraisat.mvppratctice.di.presenter.PresenterCompontent
+import com.notes.ayatkhraisat.mvppratctice.di.presenter.PresenterModule
 import com.notes.ayatkhraisat.mvppratctice.models.Model
 import javax.inject.Inject
 
-class TopRatedMoviesActivity : BaseActivity(), TopRatedMoviesContract.View {
+class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View {
 
 
     private lateinit var repository: TopRatedMoviesRepository
@@ -21,6 +26,11 @@ class TopRatedMoviesActivity : BaseActivity(), TopRatedMoviesContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        // presenter = new WelcomePresenter(this);
+        (application as App).getApplicationComponent().inject(this)
+
 
         moviesListBinding = DataBindingUtil.setContentView(
             this,
@@ -35,6 +45,13 @@ class TopRatedMoviesActivity : BaseActivity(), TopRatedMoviesContract.View {
 
     override fun showMoviesDetails() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    @UiThread
+    protected fun getControllerComponent(): PresenterCompontent {
+        (application as App)
+            .getApplicationComponent()
+            .getPresenterComponent(PresenterModule())
     }
 
 

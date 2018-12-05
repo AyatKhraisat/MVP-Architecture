@@ -5,22 +5,18 @@ import com.bumptech.glide.Glide.init
 import com.notes.ayatkhraisat.mvppratctice.base.BaseActivity
 import com.notes.ayatkhraisat.mvppratctice.base.BasePresenter
 import com.notes.ayatkhraisat.mvppratctice.di.ActivityComponent
+import com.notes.ayatkhraisat.mvppratctice.top_rated.TopRatedMoviesActivity
+import com.notes.ayatkhraisat.mvppratctice.top_rated.TopRatedMoviesPresenter
 import dagger.Provides
 import dagger.Subcomponent
 
 
-@Subcomponent(ActivityComponent<*>::class)
-class PresenterModule<P :BasePresenter<>>(val  activity: BaseActivity<P>) {
-
-    internal var https: BaseActivity<*>? = null
-
-    init {
-        this.presenter = presenter
-    }
+@Subcomponent(modules = arrayOf(ActivityComponent::class))
+class PresenterModule(val  presenter: TopRatedMoviesPresenter) {
 
 
     @Provides
-    internal fun providesPresenter(): BasePresenter {
+    internal fun providesPresenter(): TopRatedMoviesPresenter {
         return presenter
     }
 
