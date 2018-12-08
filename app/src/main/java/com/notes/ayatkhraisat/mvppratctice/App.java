@@ -3,8 +3,9 @@ package com.notes.ayatkhraisat.mvppratctice;
 
 import android.app.Application;
 import com.notes.ayatkhraisat.mvppratctice.di.ApplicationComponent;
-import com.notes.ayatkhraisat.mvppratctice.di.ApplicationModule;
 import com.notes.ayatkhraisat.mvppratctice.di.DaggerApplicationComponent;
+import com.notes.ayatkhraisat.mvppratctice.di.presenter.PresenterModule;
+import com.notes.ayatkhraisat.mvppratctice.di.presenter.RepoModule;
 import dagger.android.DaggerApplication;
 
 public class App extends Application {
@@ -14,8 +15,9 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        applicationComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule()).build();
+         applicationComponent = DaggerApplicationComponent.builder().
+                repoModule(new RepoModule()).
+                presenterModule(new PresenterModule()).build();
     }
 
     public ApplicationComponent getApplicationComponent() {

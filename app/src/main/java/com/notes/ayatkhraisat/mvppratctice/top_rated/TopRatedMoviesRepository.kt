@@ -7,7 +7,7 @@ import com.notes.ayatkhraisat.mvppratctice.network.MoviesService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-public class TopRatedMoviesRepository constructor(context: Context) {
+public class TopRatedMoviesRepository constructor() {
 
 
 

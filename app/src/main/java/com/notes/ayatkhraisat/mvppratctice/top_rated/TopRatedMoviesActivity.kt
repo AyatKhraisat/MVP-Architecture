@@ -9,8 +9,6 @@ import com.notes.ayatkhraisat.mvppratctice.App
 import com.notes.ayatkhraisat.mvppratctice.R
 import com.notes.ayatkhraisat.mvppratctice.base.BaseActivity
 import com.notes.ayatkhraisat.mvppratctice.databinding.ActivityMoviesListBinding
-import com.notes.ayatkhraisat.mvppratctice.di.ActivityComponent
-import com.notes.ayatkhraisat.mvppratctice.di.presenter.PresenterCompontent
 import com.notes.ayatkhraisat.mvppratctice.di.presenter.PresenterModule
 import com.notes.ayatkhraisat.mvppratctice.models.Model
 import javax.inject.Inject
@@ -18,9 +16,10 @@ import javax.inject.Inject
 class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View {
 
 
-    private lateinit var repository: TopRatedMoviesRepository
+   @Inject
+    lateinit var repository: TopRatedMoviesRepository
     @Inject
-    protected lateinit var presenter: TopRatedMoviesPresenter
+     lateinit var presenter: TopRatedMoviesPresenter
     private lateinit var moviesListBinding: ActivityMoviesListBinding
 
 
@@ -28,7 +27,6 @@ class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View 
         super.onCreate(savedInstanceState)
 
 
-        // presenter = new WelcomePresenter(this);
         (application as App).getApplicationComponent().inject(this)
 
 
@@ -36,9 +34,8 @@ class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View 
             this,
             R.layout.activity_movies_list
         )
-        repository = TopRatedMoviesRepository(this)
-        presenter = TopRatedMoviesPresenter(repository, this)
 
+      presenter.attachView(this)
         presenter.loadMoviesList()
 
     }
@@ -47,12 +44,6 @@ class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View 
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    @UiThread
-    protected fun getControllerComponent(): PresenterCompontent {
-        (application as App)
-            .getApplicationComponent()
-            .getPresenterComponent(PresenterModule())
-    }
 
 
     override fun showMoviesList(list: ArrayList<Model.MovieItem>) {

@@ -42,7 +42,7 @@ class TopRatedMoviesAdapter(val moviesList: ArrayList<Model.MovieItem>? ) : Recy
 
     override fun getItemCount(): Int {
 
-        moviesList?.let { return moviesList!!.size }
+        moviesList?.let { return moviesList.size }
         return 0;
     }
 
