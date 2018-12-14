@@ -1,17 +1,18 @@
-package com.notes.ayatkhraisat.mvppratctice.top_rated
+package com.ayatkhraisat.mvp_example.top_rated
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.notes.ayatkhraisat.mvppratctice.R
-import com.notes.ayatkhraisat.mvppratctice.databinding.MovieItemBinding
-import com.notes.ayatkhraisat.mvppratctice.models.Model
+import com.notes.ayatkhraisat.mvp_example.R
+import com.notes.ayatkhraisat.mvp_example.databinding.MovieItemBinding
+import com.ayatkhraisat.mvp_example.models.Model
 
 
 
 
-class TopRatedMoviesAdapter(val moviesList: ArrayList<Model.MovieItem>? ) : RecyclerView.Adapter<TopRatedMoviesAdapter.ViewHolder>() {
+class TopRatedMoviesAdapter(val moviesList: ArrayList<Model.MovieItem>? )
+    : RecyclerView.Adapter<TopRatedMoviesAdapter.ViewHolder>() {
 
 
 
@@ -36,7 +37,7 @@ class TopRatedMoviesAdapter(val moviesList: ArrayList<Model.MovieItem>? ) : Recy
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.binding.movie=moviesList!!.get(position)
+        holder.binding.movie= this.moviesList!!.get(position)
 
     }
 

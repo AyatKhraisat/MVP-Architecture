@@ -1,4 +1,4 @@
-package com.notes.ayatkhraisat.mvppratctice
+package com.notes.ayatkhraisat.mvp_example
 
 import org.junit.Test
 

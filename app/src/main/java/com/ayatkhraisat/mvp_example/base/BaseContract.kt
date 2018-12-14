@@ -1,4 +1,4 @@
-package com.notes.ayatkhraisat.mvppratctice.base
+package com.ayatkhraisat.mvp_example.base
 
 interface BaseContract {
 

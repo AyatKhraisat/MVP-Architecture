@@ -1,4 +1,4 @@
-package com.notes.ayatkhraisat.mvppratctice.models
+package com.ayatkhraisat.mvp_example.models
 
 
 import com.google.gson.annotations.SerializedName

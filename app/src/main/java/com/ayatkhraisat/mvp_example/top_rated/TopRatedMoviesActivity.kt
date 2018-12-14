@@ -1,39 +1,38 @@
-package com.notes.ayatkhraisat.mvppratctice.top_rated
+package com.ayatkhraisat.mvp_example.top_rated
 
 import android.os.Bundle
-import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.notes.ayatkhraisat.mvppratctice.App
-import com.notes.ayatkhraisat.mvppratctice.R
-import com.notes.ayatkhraisat.mvppratctice.base.BaseActivity
-import com.notes.ayatkhraisat.mvppratctice.databinding.ActivityMoviesListBinding
-import com.notes.ayatkhraisat.mvppratctice.di.presenter.PresenterModule
-import com.notes.ayatkhraisat.mvppratctice.models.Model
+import com.ayatkhraisat.mvp_example.App
+import com.ayatkhraisat.mvp_example.base.BaseActivity
+import com.notes.ayatkhraisat.mvp_example.R
+import com.notes.ayatkhraisat.mvp_example.databinding.ActivityMoviesListBinding
+import com.ayatkhraisat.mvp_example.models.Model
 import javax.inject.Inject
 
-class TopRatedMoviesActivity : AppCompatActivity(), TopRatedMoviesContract.View {
+class TopRatedMoviesActivity : BaseActivity(), TopRatedMoviesContract.View {
 
 
-   @Inject
+
+    @Inject
     lateinit var repository: TopRatedMoviesRepository
     @Inject
-     lateinit var presenter: TopRatedMoviesPresenter
+    lateinit var presenter: TopRatedMoviesPresenter
+
     private lateinit var moviesListBinding: ActivityMoviesListBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-        (application as App).getApplicationComponent().inject(this)
-
-
         moviesListBinding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_movies_list
         )
+        viewComponent.inject(this)
+
+
+
 
       presenter.attachView(this)
         presenter.loadMoviesList()

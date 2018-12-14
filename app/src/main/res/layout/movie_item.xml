@@ -7,7 +7,7 @@
     <data>
         <variable
                 name="movie"
-                type="com.notes.ayatkhraisat.mvppratctice.models.Model.MovieItem"/>
+                type="com.ayatkhraisat.mvp_example.models.Model.MovieItem"/>
 
         <import type="java.lang.String"/>
 
@@ -23,7 +23,7 @@
                 android:layout_height="150dp"
                 tools:srcCompat="@tools:sample/avatars"
                 android:id="@+id/iv_movie_poster"
-                android:posterImage="@{movie.posterPath}"
+        android:posterImage="@{movie.posterPath}"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
@@ -35,6 +35,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 app:layout_constraintDimensionRatio="w,2:3"/>
+
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -42,12 +43,13 @@
                 app:layout_constraintStart_toEndOf="@+id/iv_movie_poster"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:text="@{movie.title}"
+        android:text="@{movie.title}"
                 tools:text="Movie Name" app:layout_constraintTop_toTopOf="@+id/iv_movie_poster"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0" android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"/>
+
         <TextView
                 tools:text="8.5/10"
                 android:layout_width="0dp"

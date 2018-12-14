@@ -1,13 +1,12 @@
-package com.notes.ayatkhraisat.mvppratctice.top_rated
+package com.ayatkhraisat.mvp_example.top_rated
 
-import androidx.annotation.UiThread
-import com.bumptech.glide.Glide.init
-
-import com.notes.ayatkhraisat.mvppratctice.models.Model
+import com.ayatkhraisat.mvp_example.models.Model
+import javax.inject.Inject
 
 
- class TopRatedMoviesPresenter(val repository: TopRatedMoviesRepository)
-    : TopRatedMoviesContract.ActionsListener, TopRatedMoviesContract.Repo {
+class TopRatedMoviesPresenter constructor(val repository: TopRatedMoviesRepository)
+    : TopRatedMoviesContract.ActionsListener,
+     TopRatedMoviesContract.Repo {
 
      lateinit var view : TopRatedMoviesContract.View
 

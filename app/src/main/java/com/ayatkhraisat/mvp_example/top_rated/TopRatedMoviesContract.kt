@@ -1,6 +1,6 @@
-package com.notes.ayatkhraisat.mvppratctice.top_rated
+package com.ayatkhraisat.mvp_example.top_rated
 
-import com.notes.ayatkhraisat.mvppratctice.models.Model
+import com.ayatkhraisat.mvp_example.models.Model
 
 interface TopRatedMoviesContract {
 
