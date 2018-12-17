@@ -7,7 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class TopRatedMoviesRepository  constructor(val moviesService: MoviesService) {
+class TopRatedMoviesRepository @Inject  constructor(val moviesService: MoviesService) {
 
 
     fun getTopRatedMovies(listener: TopRatedMoviesContract.Repo) {

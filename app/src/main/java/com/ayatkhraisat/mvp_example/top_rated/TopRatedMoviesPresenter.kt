@@ -1,10 +1,12 @@
 package com.ayatkhraisat.mvp_example.top_rated
 
+import com.ayatkhraisat.mvp_example.di.scopes.ViewScope
 import com.ayatkhraisat.mvp_example.models.Model
 import javax.inject.Inject
 
 
-class TopRatedMoviesPresenter constructor(val repository: TopRatedMoviesRepository)
+@ViewScope
+class TopRatedMoviesPresenter @Inject constructor(val repository: TopRatedMoviesRepository)
     : TopRatedMoviesContract.ActionsListener,
      TopRatedMoviesContract.Repo {
 

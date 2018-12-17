@@ -13,10 +13,6 @@ import javax.inject.Inject
 
 class TopRatedMoviesActivity : BaseActivity(), TopRatedMoviesContract.View {
 
-
-
-    @Inject
-    lateinit var repository: TopRatedMoviesRepository
     @Inject
     lateinit var presenter: TopRatedMoviesPresenter
 
