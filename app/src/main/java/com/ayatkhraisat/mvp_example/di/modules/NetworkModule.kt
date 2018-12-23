@@ -20,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  *Project: MvpPratctice
  **/
 @Module
+@Singleton
 class NetworkModule(val baseUrl: String) {
 
 
