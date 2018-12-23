@@ -1,10 +1,10 @@
 package com.ayatkhraisat.mvp_example.di.components
 
 
-import com.ayatkhraisat.mvp_example.di.modules.PresenterModule
-import com.ayatkhraisat.mvp_example.di.modules.RepoModule
+import com.ayatkhraisat.mvp_example.di.modules.ActivityModule
 import com.ayatkhraisat.mvp_example.di.scopes.ViewScope
-import com.ayatkhraisat.mvp_example.top_rated.TopRatedMoviesActivity
+import com.ayatkhraisat.mvp_example.main.MainActivity
+import com.ayatkhraisat.mvp_example.top_rated.TopRatedMoviesFragment
 import dagger.Component
 
 /**
@@ -16,9 +16,12 @@ import dagger.Component
 @ViewScope
 @Component(
     dependencies = arrayOf(ApplicationComponent::class),
-    modules = arrayOf(PresenterModule::class, RepoModule::class)
+    modules = arrayOf(ActivityModule::class)
 )
 interface ViewComponent {
 
-    fun inject(topRatedMoviesActivity: TopRatedMoviesActivity)
+    fun inject(topRatedMoviesFragment: TopRatedMoviesFragment)
+
+    fun inject(mainActivity: MainActivity)
+
 }

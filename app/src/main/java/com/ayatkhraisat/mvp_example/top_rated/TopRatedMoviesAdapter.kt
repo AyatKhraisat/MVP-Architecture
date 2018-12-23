@@ -11,9 +11,8 @@ import com.ayatkhraisat.mvp_example.models.Model
 
 
 
-class TopRatedMoviesAdapter(val moviesList: ArrayList<Model.MovieItem>? )
+class TopRatedMoviesAdapter( val  moviesList: ArrayList<Model.MovieLocalItem>)
     : RecyclerView.Adapter<TopRatedMoviesAdapter.ViewHolder>() {
-
 
 
 
@@ -34,12 +33,13 @@ class TopRatedMoviesAdapter(val moviesList: ArrayList<Model.MovieItem>? )
         return ViewHolder(binding);
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.binding.movie= this.moviesList!!.get(position)
 
     }
+
+
 
     override fun getItemCount(): Int {
 

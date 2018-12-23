@@ -12,6 +12,7 @@ import dagger.Module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -27,22 +28,34 @@ class NetworkModule(val baseUrl: String) {
     @Provides
     @Singleton
     @NonNull
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+    internal fun provideOkHttpClient(): OkHttpClient {
+        val builder = OkHttpClient.Builder()
+        builder.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+            .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+            .readTimeout(5, TimeUnit.MINUTES) // read timeout
+
+        return builder.build()
+    }
 
 
     @Provides
     @Singleton
     @NonNull
-    fun provideRetrofit( okHttpClient: OkHttpClient): Retrofit =
-        Retrofit.Builder()
+    internal fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .baseUrl(baseUrl)
             .client(okHttpClient)
-            .build();
+            .build()
+    }
 
     @Provides
     @Singleton
     @NonNull
-    fun provideMovieService(retrofit: Retrofit) = retrofit.create(MoviesService::class.java)
+    internal fun provideMovieService(retrofit: Retrofit): MoviesService {
+        return retrofit.create<MoviesService>(MoviesService::class.java!!)
+
+    }
+
 }

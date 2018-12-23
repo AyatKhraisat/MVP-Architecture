@@ -3,7 +3,22 @@ package com.ayatkhraisat.mvp_example.base
 interface BaseContract {
 
 
-    interface BaseView
+    interface BaseView {
 
-    interface BasePresenter
+        fun showError(errorMessage: String)
+
+        fun showMessage(title: String, message: String)
+
+        fun toastLong(message: String)
+
+
+        fun toastShort(message: String)
+
+
+    }
+
+
+    interface BasePresenter {
+         fun detachView()
+    }
 }
