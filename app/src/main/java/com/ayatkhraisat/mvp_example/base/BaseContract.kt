@@ -4,7 +4,10 @@ interface BaseContract {
 
 
     interface BaseView {
+        fun toastLong(message: String)
 
+
+        fun toastShort(message: String)
     }
 
     interface BaseActionListener<T> {

@@ -1,5 +1,6 @@
 package com.ayatkhraisat.mvp_example.di.components
 
+import android.content.Context
 import com.ayatkhraisat.mvp_example.App
 import com.ayatkhraisat.mvp_example.di.modules.ApplicationModule
 import com.ayatkhraisat.mvp_example.di.modules.NetworkModule
