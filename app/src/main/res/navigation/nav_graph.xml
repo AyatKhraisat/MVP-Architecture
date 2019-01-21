@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph" app:startDestination="@id/topRatedMoviesFragment">
+
+    <fragment android:id="@+id/topRatedMoviesFragment"
+              android:name="com.ayatkhraisat.mvp_example.top_rated.TopRatedMoviesFragment"
+              android:label="TopRatedMoviesFragment">
+        <action android:id="@+id/action_topRatedMoviesFragment_to_blankFragment2" app:destination="@id/blankFragment2"/>
+    </fragment>
+    <fragment android:id="@+id/blankFragment2" android:name="com.notes.ayatkhraisat.mvppratctice.BlankFragment"
+              android:label="BlankFragment"/>
+</navigation>

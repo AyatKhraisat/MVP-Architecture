@@ -2,8 +2,6 @@ package com.ayatkhraisat.mvp_example
 
 
 import android.app.Application
-import com.ayatkhraisat.mvp_example.di.modules.PresenterModule
-import com.ayatkhraisat.mvp_example.di.modules.RepoModule
 import com.ayatkhraisat.mvp_example.di.components.ApplicationComponent
 import com.ayatkhraisat.mvp_example.di.components.DaggerApplicationComponent
 import com.ayatkhraisat.mvp_example.di.modules.ApplicationModule
