@@ -17,7 +17,7 @@ class PresenterModule {
 
     @Provides
     @ViewScope
-     fun provideTopRatedMoviesPresenter(topRatedMoviesRepository: TopRatedMoviesRepository):
+    fun provideTopRatedMoviesPresenter(topRatedMoviesRepository: TopRatedMoviesRepository):
             TopRatedMoviesPresenter {
         return TopRatedMoviesPresenter(topRatedMoviesRepository)
     }

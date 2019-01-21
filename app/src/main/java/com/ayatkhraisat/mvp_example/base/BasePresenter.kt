@@ -1,20 +1,24 @@
 package com.ayatkhraisat.mvp_example.base
 
-class BasePresenter {
+import io.reactivex.disposables.CompositeDisposable
+
+open class BasePresenter<T : BaseContract.BaseView>() :
+    BaseContract.BaseActionListener<T> {
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    private lateinit var view: T
 
 
-//    @Inject
-//    internal var context: Context? = null
-//    @Inject
-//    internal var baseView: BaseContract.BaseView? = null
-//
-//    protected var activityComponent: ViewComponent<*>? = null
-//
-//
-////    val component: ViewComponent<*>
-////        @UiThread
-////        get() = if (activityComponent != null) activityComponent else ((context as AppCompatActivity).application as App).applicationComponent.getPresenterComponent(
-////            ActivityModule(this)
-////        )
+    override fun onAttach(view: T) {
+        this.view = view
+    }
+
+
+    override fun onDetach() {
+
+        compositeDisposable.dispose();
+    }
+
+    fun getView() = view
+    fun getCompositeDisposable() = compositeDisposable
 
 }

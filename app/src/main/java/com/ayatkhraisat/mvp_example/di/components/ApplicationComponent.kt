@@ -25,7 +25,7 @@ interface ApplicationComponent {
 
     fun inject(application: App)
 
-   // fun getApplication(): Context
+     fun getApplication(): Context
 
     fun getNetworkService() : MoviesService
 

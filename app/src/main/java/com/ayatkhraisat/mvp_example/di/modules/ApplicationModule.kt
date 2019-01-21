@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.bumptech.glide.Glide.init
 import dagger.Module
+import dagger.Provides
 import javax.inject.Singleton
 
 /**
@@ -16,6 +17,7 @@ class ApplicationModule(val application: Application) {
 
 
     @Singleton
+    @Provides
     fun  provideApplicationContext(): Context = application
 
 }

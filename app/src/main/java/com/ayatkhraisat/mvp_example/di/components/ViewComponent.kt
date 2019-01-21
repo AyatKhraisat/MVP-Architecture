@@ -3,6 +3,7 @@ package com.ayatkhraisat.mvp_example.di.components
 
 import com.ayatkhraisat.mvp_example.di.modules.PresenterModule
 import com.ayatkhraisat.mvp_example.di.modules.RepoModule
+import com.ayatkhraisat.mvp_example.di.modules.UiControllerModule
 import com.ayatkhraisat.mvp_example.di.scopes.ViewScope
 import com.ayatkhraisat.mvp_example.top_rated.TopRatedMoviesActivity
 import dagger.Component
@@ -15,8 +16,8 @@ import dagger.Component
 
 @ViewScope
 @Component(
-    dependencies = arrayOf(ApplicationComponent::class),
-    modules = arrayOf(PresenterModule::class, RepoModule::class)
+    dependencies = [ApplicationComponent::class],
+    modules = [PresenterModule::class, RepoModule::class, UiControllerModule::class]
 )
 interface ViewComponent {
 

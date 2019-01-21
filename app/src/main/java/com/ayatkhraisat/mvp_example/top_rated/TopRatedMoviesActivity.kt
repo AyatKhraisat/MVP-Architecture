@@ -1,42 +1,41 @@
 package com.ayatkhraisat.mvp_example.top_rated
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ayatkhraisat.mvp_example.App
 import com.ayatkhraisat.mvp_example.base.BaseActivity
-import com.notes.ayatkhraisat.mvp_example.R
-import com.notes.ayatkhraisat.mvp_example.databinding.ActivityMoviesListBinding
 import com.ayatkhraisat.mvp_example.models.Model
+import com.notes.ayatkhraisat.mvp_example.R
+import kotlinx.android.synthetic.main.activity_movies_list.*
 import javax.inject.Inject
 
 class TopRatedMoviesActivity : BaseActivity(), TopRatedMoviesContract.View {
 
-
-
-    @Inject
-    lateinit var repository: TopRatedMoviesRepository
     @Inject
     lateinit var presenter: TopRatedMoviesPresenter
 
-    private lateinit var moviesListBinding: ActivityMoviesListBinding
-
+    @Inject
+    lateinit var adapter: TopRatedMoviesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        moviesListBinding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_movies_list
-        )
-        viewComponent.inject(this)
+        initViewComponent()
+        setContentView(R.layout.activity_movies_list)
+        attachPresenter()
+        initViews()
+    }
 
+    private fun initViews() {
+        rv_movies.adapter = adapter
+        rv_movies.layoutManager = LinearLayoutManager(this)
 
+    }
 
+    private fun attachPresenter() {
+        presenter.onAttach(this)
+    }
 
-      presenter.attachView(this)
-        presenter.loadMoviesList()
-
+    private fun initViewComponent() {
+        getViewComponent().inject(this)
     }
 
     override fun showMoviesDetails() {
@@ -44,13 +43,8 @@ class TopRatedMoviesActivity : BaseActivity(), TopRatedMoviesContract.View {
     }
 
 
-
-    override fun showMoviesList(list: ArrayList<Model.MovieItem>) {
-        moviesListBinding.invalidateAll()
-
-        moviesListBinding.rvMovies.layoutManager = LinearLayoutManager(this)
-        moviesListBinding.rvMovies.adapter = TopRatedMoviesAdapter(list)
-
+    override fun showMoviesList(list: ArrayList<Model.MovieItem?>?) {
+        adapter.setMoviesList(list)
     }
 
 

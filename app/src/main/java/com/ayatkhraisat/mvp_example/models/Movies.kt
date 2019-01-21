@@ -3,22 +3,12 @@ package com.ayatkhraisat.mvp_example.models
 
 import com.google.gson.annotations.SerializedName
 import com.bumptech.glide.Glide
-import androidx.databinding.BindingAdapter
 import android.widget.ImageView
 
 
 object Model {
 
 
-	@BindingAdapter("android:posterImage")
-	@JvmStatic
-	fun loadPosterImage(view: ImageView, imageUrl: String) {
-		Glide.with(view.context)
-			.load(
-				"https://image.tmdb.org/t/p/w500$imageUrl"
-			)
-			.into(view)
-	}
 	data class MoviesList
 		(
 
@@ -29,7 +19,7 @@ object Model {
 		val totalPages: Int? = null,
 
 		@field:SerializedName("results")
-		val results: List<MovieItem?>? = null,
+		val results: ArrayList<MovieItem?>? = null,
 
 		@field:SerializedName("total_results")
 		val totalResults: Int? = null

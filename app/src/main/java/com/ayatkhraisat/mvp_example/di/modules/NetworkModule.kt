@@ -40,8 +40,10 @@ class NetworkModule(val baseUrl: String) {
             .client(okHttpClient)
             .build();
 
+
     @Provides
     @Singleton
     @NonNull
-    fun provideMovieService(retrofit: Retrofit) = retrofit.create(MoviesService::class.java)
+    fun provideMoviesService(retrofit: Retrofit) :MoviesService {
+        return retrofit.create(MoviesService::class.java)}
 }
