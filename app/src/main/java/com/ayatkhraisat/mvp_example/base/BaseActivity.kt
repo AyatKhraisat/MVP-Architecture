@@ -14,7 +14,6 @@ import com.ayatkhraisat.mvp_example.di.modules.ActivityModule
 import com.ayatkhraisat.mvp_example.di.modules.RepoModule
 import com.ayatkhraisat.mvp_example.dialogs.SimpleMessageAlertDialog
 
-
 open class BaseActivity: AppCompatActivity(){
 
 
