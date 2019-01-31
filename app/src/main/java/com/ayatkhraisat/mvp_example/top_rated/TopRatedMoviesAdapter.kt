@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ayatkhraisat.mvp_example.di.qualifires.Qualifiers
+import com.ayatkhraisat.mvp_example.di.qualifires.ActivityContext
 import com.ayatkhraisat.mvp_example.models.Model
 import com.bumptech.glide.Glide
 import com.notes.ayatkhraisat.mvp_example.R
 import javax.inject.Inject
 
 
-class TopRatedMoviesAdapter @Inject constructor(@Qualifiers.ActivityContext val context: Context) :
+class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Context) :
     RecyclerView.Adapter<TopRatedMoviesAdapter.ViewHolder>() {
 
 

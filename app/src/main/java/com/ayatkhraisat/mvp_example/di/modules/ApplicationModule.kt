@@ -1,8 +1,7 @@
 package com.ayatkhraisat.mvp_example.di.modules
 
-import android.app.Application
 import android.content.Context
-import com.bumptech.glide.Glide.init
+import com.ayatkhraisat.mvp_example.di.qualifires.ApplicationContext
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,11 +12,13 @@ import javax.inject.Singleton
  * Project: MvpExample
  */
 @Module
-class ApplicationModule(val application: Application) {
+class ApplicationModule(val application: Context) {
 
 
     @Singleton
+    @ApplicationContext
     @Provides
     fun  provideApplicationContext(): Context = application
+
 
 }

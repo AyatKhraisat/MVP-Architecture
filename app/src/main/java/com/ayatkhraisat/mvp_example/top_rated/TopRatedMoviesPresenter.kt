@@ -2,14 +2,13 @@ package com.ayatkhraisat.mvp_example.top_rated
 
 import android.util.Log
 import com.ayatkhraisat.mvp_example.base.BasePresenter
-import com.ayatkhraisat.mvp_example.models.Model
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
 class TopRatedMoviesPresenter @Inject constructor(val repository: TopRatedMoviesRepository) :
-    TopRatedMoviesContract.ActionsListener<TopRatedMoviesActivity>, BasePresenter<TopRatedMoviesActivity>() {
+    TopRatedMoviesContract.ActionsListener<TopRatedMoviesFragment>, BasePresenter<TopRatedMoviesFragment>() {
 
     init {
 

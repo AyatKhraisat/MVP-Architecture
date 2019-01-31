@@ -13,6 +13,6 @@ interface MoviesService {
 
 
     @GET("/3/movie/top_rated")
-    fun getTopRatedMovies(@Query("api_key") apiKey: String): Observable<Model.MoviesList>
+    fun getTopRatedMovies(@Query("api_key") apiKey: String): Single<Model.MoviesList>
 
 }

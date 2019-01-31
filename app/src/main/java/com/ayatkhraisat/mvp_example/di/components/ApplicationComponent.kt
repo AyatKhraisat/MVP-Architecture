@@ -4,9 +4,9 @@ import android.content.Context
 import com.ayatkhraisat.mvp_example.App
 import com.ayatkhraisat.mvp_example.di.modules.ApplicationModule
 import com.ayatkhraisat.mvp_example.di.modules.NetworkModule
+import com.ayatkhraisat.mvp_example.di.qualifires.ApplicationContext
 import com.ayatkhraisat.mvp_example.network.MoviesService
 import dagger.Component
-
 import javax.inject.Singleton
 
 /**
@@ -16,13 +16,14 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = arrayOf(ApplicationModule::class,NetworkModule::class))
+@Component(modules = arrayOf(ApplicationModule::class, NetworkModule::class))
 interface ApplicationComponent {
 
     fun inject(application: App)
 
-     fun getApplication(): Context
+    @ApplicationContext
+    fun getApplication(): Context
 
-    fun getNetworkService() : MoviesService
+    fun getNetworkService(): MoviesService
 
 }

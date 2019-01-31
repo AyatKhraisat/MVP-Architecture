@@ -11,18 +11,10 @@ import javax.inject.Inject
  * Blessed Tree IT
  */
 
-public class MainPresenter @Inject constructor(private val mainView: MainContract.MainView) : MainContract.MainPresenter {
+ class MainPresenter @Inject constructor(private val mainView: MainContract.MainView) {
 
 
-    override fun detachView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-
-    init {
-        mainView.showTasksFragment()
-
-    }
 
 //    fun detachView() {
 //

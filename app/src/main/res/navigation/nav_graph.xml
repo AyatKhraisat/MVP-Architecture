@@ -7,8 +7,8 @@
     <fragment android:id="@+id/topRatedMoviesFragment"
               android:name="com.ayatkhraisat.mvp_example.top_rated.TopRatedMoviesFragment"
               android:label="TopRatedMoviesFragment">
-        <action android:id="@+id/action_topRatedMoviesFragment_to_blankFragment2" app:destination="@id/blankFragment2"/>
+        <action android:id="@+id/action_topRatedMoviesFragment_to_BlankFragment2" app:destination="@id/BlankFragment2"/>
     </fragment>
-    <fragment android:id="@+id/blankFragment2" android:name="com.notes.ayatkhraisat.mvppratctice.BlankFragment"
-              android:label="BlankFragment"/>
+    <fragment android:name="com.notes.ayatkhraisat.mvppratctice.BlankFragment"
+              android:label="BlankFragment" android:id="@+id/BlankFragment2"/>
 </navigation>
