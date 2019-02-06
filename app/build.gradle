@@ -39,6 +39,10 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "android.arch.navigation:navigation-ui:1.0.0-alpha11"
 
+    //pagging library
+    implementation 'android.arch.paging:runtime:1.0.1'
+
+
     // For Networking
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'

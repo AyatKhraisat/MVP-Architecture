@@ -1,11 +1,15 @@
 package com.ayatkhraisat.mvp_example.top_rated
 
 import android.content.Context
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.paging.PagedList
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ayatkhraisat.mvp_example.di.qualifires.ActivityContext
 import com.ayatkhraisat.mvp_example.models.Model
@@ -15,7 +19,7 @@ import javax.inject.Inject
 
 
 class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Context) :
-    RecyclerView.Adapter<TopRatedMoviesAdapter.ViewHolder>() {
+    PagedListAdapter<Model.MovieItem,TopRatedMoviesAdapter.ViewHolder>(Model.MovieItem.DIFF_CALLBACK) {
 
 
     private val  moviesList: ArrayList<Model.MovieItem?> = ArrayList()
@@ -29,21 +33,20 @@ class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Co
 
     }
 
-    public fun setMoviesList(moviesList: ArrayList<Model.MovieItem?>?) {
-        this.moviesList.clear()
-        this.moviesList.addAll(moviesList!!)
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
         return ViewHolder(v)
 
     }
 
+
+    override fun submitList(pagedList: PagedList<Model.MovieItem>?) {
+        super.submitList(pagedList)
+        notifyDataSetChanged()
+    }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val movie = moviesList.get(position)
+        val movie = getItem(position)
 
         holder.title.text = movie!!.title
         holder.rate.text = movie.voteAverage.toString()
@@ -55,9 +58,8 @@ class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Co
     }
 
 
-    override fun getItemCount(): Int {
-            return  moviesList.size
 
-    }
 
 }
+
+

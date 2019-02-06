@@ -18,6 +18,7 @@ open class BasePresenter<T : BaseContract.BaseView>() :
         compositeDisposable.dispose();
     }
 
+
     fun getView() = view
     fun getCompositeDisposable() = compositeDisposable
 

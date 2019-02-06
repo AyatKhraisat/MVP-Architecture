@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.RecyclerView
 import com.ayatkhraisat.mvp_example.base.BaseActivity
 import com.ayatkhraisat.mvp_example.base.BaseFragment
 import com.ayatkhraisat.mvp_example.models.Model
 import com.notes.ayatkhraisat.mvp_example.R
-import kotlinx.android.synthetic.main.activity_movies_list.*
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.activity_movies_list.rv_movies
 
 class TopRatedMoviesFragment : BaseFragment(), TopRatedMoviesContract.View {
 
@@ -36,10 +36,11 @@ class TopRatedMoviesFragment : BaseFragment(), TopRatedMoviesContract.View {
 
         val rootView = inflater.inflate(R.layout.activity_movies_list, container, false)
 
-        moviesRecyclerView =rootView.findViewById(R.id.rv_movies)
+        moviesRecyclerView = rootView.findViewById(R.id.rv_movies)
 
         attachPresenter()
         initViews()
+        presenter.getPagedList().observe(this, Observer {   adapter.submitList(it)  })
 
         return rootView
     }
@@ -62,10 +63,10 @@ class TopRatedMoviesFragment : BaseFragment(), TopRatedMoviesContract.View {
         base.viewComponent.inject(this)
     }
 
-
-    override fun showMoviesList(list: ArrayList<Model.MovieItem?>?) {
-        adapter.setMoviesList(list)
+    override fun showMoviesList(list: PagedList<Model.MovieItem>) {
+        adapter.submitList(list)
     }
+
 
 
 }
