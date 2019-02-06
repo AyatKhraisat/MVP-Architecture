@@ -58,8 +58,6 @@ class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Co
     }
 
 
-
-
 }
 
 
