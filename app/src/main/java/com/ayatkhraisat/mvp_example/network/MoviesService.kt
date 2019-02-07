@@ -10,7 +10,7 @@ interface MoviesService {
 
 
     @GET("/3/movie/top_rated")
-    fun getTopRatedMovies(@Query("api_key") apiKey: String, @Query("page") page: Int): Call
+    fun getTopRatedMovies(@Query("api_key") apiKey: String, @Query("page") page: Int): Single
     <Model.MoviesList>
 
 }

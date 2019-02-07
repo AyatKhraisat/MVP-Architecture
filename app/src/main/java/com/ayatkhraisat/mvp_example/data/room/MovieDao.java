@@ -1,5 +1,6 @@
 package com.ayatkhraisat.mvp_example.data.room;
 
+import androidx.paging.DataSource;
 import androidx.room.*;
 
 import com.ayatkhraisat.mvp_example.models.Model;
@@ -19,21 +20,24 @@ import java.util.List;
 public interface MovieDao {
 
     @Query("SELECT * FROM movie")
-    Single<List<Model.MovieLocalItem>> getAll();
+    DataSource.Factory<Integer, Model.MovieItem> getAll();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void saveAll(List<Model.MovieLocalItem> toDoList);
+    void saveAll(List<Model.MovieItem> toDoList);
+
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void save(Model.MovieLocalItem toDoModel);
+    void save(Model.MovieItem toDoModel);
 
     @Query("SELECT COUNT() FROM movie")
     int getNumberOfRows();
+
 
     @Query("DELETE FROM movie")
     void clearAll();
 
     @Delete
-    void delete(Model.MovieLocalItem toDoModel);
+    void delete(Model.MovieItem toDoModel);
 
 }

@@ -2,7 +2,6 @@ package com.ayatkhraisat.mvp_example.di.modules
 
 import android.content.Context
 import com.ayatkhraisat.mvp_example.base.BaseActivity
-import com.ayatkhraisat.mvp_example.data.DataSourceFactory
 import com.ayatkhraisat.mvp_example.data.room.AppDatabase
 import com.ayatkhraisat.mvp_example.data.room.MovieDao
 import com.ayatkhraisat.mvp_example.di.qualifires.ActivityContext

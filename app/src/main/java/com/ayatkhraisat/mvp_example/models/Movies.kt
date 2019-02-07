@@ -1,13 +1,10 @@
 package com.ayatkhraisat.mvp_example.models
 
 
-import android.os.Parcel
-import android.os.Parcelable
+import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import android.R.id
-import androidx.recyclerview.widget.DiffUtil
 import io.reactivex.annotations.NonNull
 
 
@@ -30,7 +27,8 @@ object Model {
         val totalResults: Int? = null
     )
 
-    data class MovieItem (
+    @Entity(tableName = "movie")
+    data class MovieItem(
         @field:SerializedName("overview")
         val overview: String? = null,
 
@@ -45,9 +43,6 @@ object Model {
 
         @field:SerializedName("title")
         val title: String? = null,
-
-        @field:SerializedName("genre_ids")
-        val genreIds: List<Int?>? = null,
 
         @field:SerializedName("poster_path")
         val posterPath: String? = null,
@@ -64,6 +59,7 @@ object Model {
         @field:SerializedName("popularity")
         val popularity: Double? = null,
 
+        @PrimaryKey
         @field:SerializedName("id")
         val id: Int? = null,
 
@@ -71,63 +67,24 @@ object Model {
         val adult: Boolean? = null,
 
         @field:SerializedName("vote_count")
-        val voteCount: Int? = null
-    )  {
+        val voteCount: Int? = null,
 
 
-      object DIFF_CALLBACK: DiffUtil.ItemCallback<MovieItem>() {
-          override fun areItemsTheSame(@NonNull oldItem: MovieItem, @NonNull newItem: MovieItem): Boolean {
-              return oldItem.id === newItem.id
-          }
+        @field:SerializedName("page")
+        val page: Int? = null
 
-          override fun areContentsTheSame(@NonNull oldItem: MovieItem, @NonNull newItem: MovieItem): Boolean {
-              return oldItem.equals(newItem)
-          }
-      }
+    )
 
-
-        override fun equals(obj: Any?): Boolean {
-            if (obj === this)
-                return true
-
-            val article = obj as MovieItem?
-            return article!!.id === this.id
+    object DIFF_CALLBACK : DiffUtil.ItemCallback<Model.MovieItem>() {
+        override fun areItemsTheSame(@NonNull oldItem: Model.MovieItem, @NonNull newItem: Model.MovieItem): Boolean {
+            return oldItem.id === newItem.id
         }
 
-
-
-
+        override fun areContentsTheSame(@NonNull oldItem: Model.MovieItem, @NonNull newItem: Model.MovieItem): Boolean {
+            return oldItem.equals(newItem)
+        }
     }
-
-    @Entity(tableName = "movie")
-    data class MovieLocalItem(
-        val overview: String? = null,
-
-        val originalLanguage: String? = null,
-
-        val title: String? = null,
-
-        val posterPath: String? = null,
-
-        val backdropPath: String? = null,
-
-        val releaseDate: String? = null,
-
-        val voteAverage: Double = 0.0,
-
-        val popularity: Double? = null,
-
-        @PrimaryKey
-        val id: Int? = null
-
-    )
 }
 
-fun Model.MovieItem.convertToLocal(): Model.MovieLocalItem {
-    return Model.MovieLocalItem(
-        overview, originalLanguage,
-        title, posterPath, backdropPath,
-        releaseDate, voteAverage, popularity
-    )
-}
+
 

@@ -69,6 +69,8 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     implementation "android.arch.persistence.room:rxjava2:1.1.1"
     androidTestImplementation "android.arch.core:core-testing:1.1.1"
+    kapt 'android.arch.persistence.room:compiler:1.1.1'
+
 
 }
 

@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 
 class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Context) :
-    PagedListAdapter<Model.MovieItem,TopRatedMoviesAdapter.ViewHolder>(Model.MovieItem.DIFF_CALLBACK) {
+    PagedListAdapter<Model.MovieItem,TopRatedMoviesAdapter.ViewHolder>(Model.DIFF_CALLBACK) {
 
 
     private val  moviesList: ArrayList<Model.MovieItem?> = ArrayList()
@@ -30,6 +30,7 @@ class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Co
         var avatar: ImageView = itemView.findViewById(R.id.iv_movie_poster)
         var title: TextView = itemView.findViewById(R.id.tv_title)
         var rate: TextView = itemView.findViewById(R.id.tv_rate)
+
 
     }
 
