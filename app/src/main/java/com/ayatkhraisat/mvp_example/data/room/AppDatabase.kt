@@ -22,9 +22,7 @@ const val DATABASE_NAME = "movie-database"
 @Database(entities = [Model.MovieItem::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
-
     abstract fun taskDao(): MovieDao
-
 
     companion object {
         var INSTANCE: AppDatabase? = null
