@@ -3,6 +3,7 @@ package com.ayatkhraisat.mvp_example.di.components
 import android.content.Context
 import android.content.SharedPreferences
 import com.ayatkhraisat.mvp_example.App
+import com.ayatkhraisat.mvp_example.data.room.MovieDao
 import com.ayatkhraisat.mvp_example.data.room.SharedPreferencesHelper
 import com.ayatkhraisat.mvp_example.di.modules.ApplicationModule
 import com.ayatkhraisat.mvp_example.di.modules.NetworkModule
@@ -29,5 +30,9 @@ interface ApplicationComponent {
     fun getNetworkService(): MoviesService
 
 
-    fun getSharedPrefrences(): SharedPreferencesHelper
+    fun getSharedPreferences(): SharedPreferencesHelper
+
+    fun getDatabase() : MovieDao
+
+
 }

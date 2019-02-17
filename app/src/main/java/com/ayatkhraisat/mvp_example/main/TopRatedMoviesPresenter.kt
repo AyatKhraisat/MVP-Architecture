@@ -1,36 +1,54 @@
-package com.ayatkhraisat.mvp_example.main
+package com.ayatkhraisat.mvp_example.top_rated
 
+import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.ayatkhraisat.mvp_example.base.BasePresenter
-import com.ayatkhraisat.mvp_example.data.DataSourceFactory
+import com.ayatkhraisat.mvp_example.data.room.MovieDao
+import com.ayatkhraisat.mvp_example.main.TopRatedMoviesActivity
+import com.ayatkhraisat.mvp_example.main.TopRatedMoviesContract
 import com.ayatkhraisat.mvp_example.models.Model
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.BiConsumer
+import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
+
+import javax.inject.Inject
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
-import javax.inject.Inject
 
 /**
- * Created by Ayat khraisat  on 2/12/19
+ * Created by Ayat khraisat  on 2/6/19
  * akhraisat@blessedtreeit.com
- * <p>
+ *
+ *
  * Project Name: MVP_Architecture
- * <p>
+ *
+ *
  * Blessed Tree IT
  */
-class TopRatedMoviesPresenter
-@Inject constructor(val moviesDataSource: DataSourceFactory)
-    : BasePresenter<TopRatedMoviesActivity>(),
-    TopRatedMoviesContract.TopRatedMoviesActions {
+class TopRatedMoviesPresenter @Inject
+internal constructor(private val topRatedMoviesRepository: TopRatedMoviesRepository, private val movieDao: MovieDao) :
+    BasePresenter<TopRatedMoviesActivity>(), TopRatedMoviesContract.TopRatedMoviesActions {
 
     private var executor: Executor? = null
-    private lateinit var pagedList: LiveData<PagedList<Model.MovieItem>>
+    lateinit var pagedList: LiveData<PagedList<Model.MovieItem>>
+        private set
 
+    private var lastRequestedPage: Int = 0
+    private val ioExecutor: Executor? = null
+
+    init {
+        lastRequestedPage = 1
+    }
 
     override fun onAttach(view: TopRatedMoviesActivity) {
         super.onAttach(view)
         loadMoviesList()
     }
+
     private fun loadMoviesList() {
 
         executor = Executors.newFixedThreadPool(5)
@@ -40,19 +58,40 @@ class TopRatedMoviesPresenter
             .setInitialLoadSizeHint(20)
             .setPageSize(10).build()
 
-        pagedList = LivePagedListBuilder(moviesDataSource, pagedListConfig)
+        val integerMovieItemDataSource = movieDao.all
+        pagedList = LivePagedListBuilder(integerMovieItemDataSource, pagedListConfig)
             .setFetchExecutor(executor!!)
+            .setBoundaryCallback(object : PagedList.BoundaryCallback<Model.MovieItem>() {
+                override fun onZeroItemsLoaded() {
+                    super.onZeroItemsLoaded()
+                    lastRequestedPage = 1
+
+                    loadData(lastRequestedPage)
+                }
+
+                override fun onItemAtEndLoaded(itemAtEnd: Model.MovieItem) {
+                    super.onItemAtEndLoaded(itemAtEnd)
+                    loadData(++lastRequestedPage)
+                }
+
+            })
             .build()
-
-
-
     }
 
-    fun getPagedList(): LiveData<PagedList<Model.MovieItem>> {
-        return pagedList
+
+    private fun loadData(index: Int) {
+        getCompositeDisposable().add(
+            topRatedMoviesRepository.getTopRatedMovies(index)
+                .subscribe(
+                    { Log.d(javaClass.name, "saved to database!") },
+                    { Log.e(javaClass.name, "Something went wrong will saving to database") })
+        )
+
     }
 
     override fun openMovieDetails() {
-
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+
 }

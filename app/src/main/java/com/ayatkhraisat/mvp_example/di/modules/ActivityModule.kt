@@ -28,13 +28,6 @@ class ActivityModule(val context: Context) {
     }
 
 
-    @Provides
-    @ViewScope
-    fun provideTasksDao(): MovieDao {
-        return AppDatabase.getAppDataBase(context)!!.taskDao()
-
-    }
-
 
     @Provides
     @ViewScope
@@ -48,15 +41,6 @@ class ActivityModule(val context: Context) {
     fun provideBaseActivity(@ActivityContext context: Context): BaseActivity {
         return context as BaseActivity
     }
-
-
-
-
-
-
-
-
-
 
 
 }

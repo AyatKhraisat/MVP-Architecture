@@ -5,6 +5,8 @@ import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import com.ayatkhraisat.mvp_example.base.BaseActivity
 import com.ayatkhraisat.mvp_example.models.Model
+import com.ayatkhraisat.mvp_example.top_rated.TopRatedMoviesAdapter
+import com.ayatkhraisat.mvp_example.top_rated.TopRatedMoviesPresenter
 import com.notes.ayatkhraisat.mvp_example.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,7 +32,7 @@ class TopRatedMoviesActivity : BaseActivity(),TopRatedMoviesContract.TopRatedMov
 
         attachPresenter()
         initViews()
-        presenter.getPagedList().observe(this, Observer { adapter.submitList(it) })
+        presenter.pagedList.observe(this, Observer { adapter.submitList(it) })
 
     }
 
