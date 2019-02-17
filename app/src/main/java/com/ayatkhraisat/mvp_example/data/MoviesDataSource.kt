@@ -20,7 +20,7 @@ import javax.inject.Inject
  * Blessed Tree IT
  */
 
-const val API_KEY = "a88fdea6e9d79ea3b06d8f065ca3a005"
+const val API_KEY = ""
 
 class MoviesDataSource @Inject constructor(val moviesService: MoviesService) :
     PageKeyedDataSource<Int, Model.MovieItem>() {
