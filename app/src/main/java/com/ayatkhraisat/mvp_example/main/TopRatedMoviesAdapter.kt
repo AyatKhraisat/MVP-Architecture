@@ -1,8 +1,6 @@
 package com.ayatkhraisat.mvp_example.top_rated
 
 import android.content.Context
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,15 +20,12 @@ class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Co
     PagedListAdapter<Model.MovieItem,TopRatedMoviesAdapter.ViewHolder>(Model.DIFF_CALLBACK) {
 
 
-    private val  moviesList: ArrayList<Model.MovieItem?> = ArrayList()
-
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var avatar: ImageView = itemView.findViewById(R.id.iv_movie_poster)
         var title: TextView = itemView.findViewById(R.id.tv_title)
         var rate: TextView = itemView.findViewById(R.id.tv_rate)
-
 
     }
 

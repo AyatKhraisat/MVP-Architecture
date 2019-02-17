@@ -1,5 +1,7 @@
 package com.ayatkhraisat.mvp_example.di.qualifires
 
+
+
 import javax.inject.Qualifier
 
 /**
@@ -8,8 +10,14 @@ import javax.inject.Qualifier
  * <p>
  * Project Name: MVP_Architecture
  * <p>
- * Blessed Tree IT
  */
+
+@Qualifier
+@MustBeDocumented
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ActivityContext
+
+
 @Qualifier
 @MustBeDocumented
 @Retention(AnnotationRetention.RUNTIME)

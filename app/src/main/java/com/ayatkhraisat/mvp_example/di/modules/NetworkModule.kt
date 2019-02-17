@@ -17,7 +17,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  *Created by Ayat Khriasat on 14,December,2018 at 7:57 PM
  *Email: ayatzkhraisat@gmail.com
- *Project: MvpPratctice
  **/
 @Module
 class NetworkModule(val baseUrl: String) {
