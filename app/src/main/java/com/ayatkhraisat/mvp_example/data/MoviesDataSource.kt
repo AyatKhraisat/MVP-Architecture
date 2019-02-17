@@ -20,26 +20,26 @@ import javax.inject.Inject
  * Blessed Tree IT
  */
 
+const val API_KEY = "a88fdea6e9d79ea3b06d8f065ca3a005"
+
 class MoviesDataSource @Inject constructor(val moviesService: MoviesService) :
     PageKeyedDataSource<Int, Model.MovieItem>() {
 
 
-    private val networkState: MutableLiveData<String> = MutableLiveData()
-
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Model.MovieItem>) {
-        moviesService.getTopRatedMovies("a88fdea6e9d79ea3b06d8f065ca3a005", 1)
+        moviesService.getTopRatedMovies(API_KEY, 1)
             .enqueue(object : Callback<Model.MoviesList> {
                 override fun onResponse(call: Call<Model.MoviesList>, response: Response<Model.MoviesList>) {
                     if (response.isSuccessful) {
                         callback.onResult(response.body()!!.results, null, 2)
 
                     } else {
-                        Log.e(javaClass.simpleName, "Something went wrong")
+                        Log.e(javaClass.simpleName, "${response.errorBody()}")
                     }
                 }
 
                 override fun onFailure(call: Call<Model.MoviesList>, t: Throwable) {
-                    Log.e(javaClass.simpleName, "Something went wrong")
+                    Log.e(javaClass.simpleName, "Error: ${t.message}")
                 }
 
             })
@@ -52,7 +52,8 @@ class MoviesDataSource @Inject constructor(val moviesService: MoviesService) :
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Model.MovieItem>) {
 
-        moviesService.getTopRatedMovies("a88fdea6e9d79ea3b06d8f065ca3a005", params.key)
+
+        moviesService.getTopRatedMovies(API_KEY, params.key)
             .enqueue(object : Callback<Model.MoviesList> {
                 override fun onResponse(call: Call<Model.MoviesList>, response: Response<Model.MoviesList>) {
                     if (response.isSuccessful) {
@@ -60,12 +61,12 @@ class MoviesDataSource @Inject constructor(val moviesService: MoviesService) :
                         callback.onResult(response.body()!!.results, nextKey)
 
                     } else {
-                        Log.e(javaClass.simpleName, "Something went wrong")
+                        Log.e(javaClass.simpleName, "${response.errorBody()}")
                     }
                 }
 
                 override fun onFailure(call: Call<Model.MoviesList>, t: Throwable) {
-                    Log.e(javaClass.simpleName,"Something went wrong")
+                    Log.e(javaClass.simpleName, "Error: ${t.message}")
                 }
 
             })

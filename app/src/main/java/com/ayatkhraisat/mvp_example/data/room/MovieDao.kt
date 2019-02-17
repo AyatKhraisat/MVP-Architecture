@@ -10,7 +10,6 @@ import io.reactivex.Single
  * <p>
  * Project Name: MVP_Architecture
  * <p>
- * Blessed Tree IT
  */
 @Dao
 interface MovieDao {

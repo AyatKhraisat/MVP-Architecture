@@ -50,19 +50,10 @@ abstract class BaseFragment : Fragment(), BaseContract.BaseView {
     protected abstract fun inject(base: BaseActivity)
 
 
-    override fun onDetach() {
-        super.onDetach()
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(false)
-    }
-
-    override fun onDestroy() {
-
-        super.onDestroy()
     }
 
 

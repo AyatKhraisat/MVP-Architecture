@@ -1,5 +1,9 @@
 package com.ayatkhraisat.mvp_example.main
 
+import androidx.paging.PagedList
+import com.ayatkhraisat.mvp_example.base.BaseContract
+import com.ayatkhraisat.mvp_example.models.Model
+
 /**
  * Created by Ayat khraisat  on 1/31/19
  * akhraisat@blessedtreeit.com
@@ -11,11 +15,12 @@ package com.ayatkhraisat.mvp_example.main
 interface MainContract {
 
 
-    interface MainView {
-
+    interface MainView  {
+        fun showMoviesList(list : PagedList<Model.MovieItem>)
+        fun showMoviesDetails()
     }
 
     interface MainActions {
-
+        fun openMovieDetails();
     }
 }

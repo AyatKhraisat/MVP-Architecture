@@ -1,4 +1,4 @@
-package com.ayatkhraisat.mvp_example.top_rated
+package com.ayatkhraisat.mvp_example.main
 
 import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
@@ -21,18 +21,17 @@ import javax.inject.Inject
  */
 class TopRatedMoviesPresenter
 @Inject constructor(val moviesDataSource: DataSourceFactory)
-    : BasePresenter<TopRatedMoviesFragment>(),
-    TopRatedMoviesContract.ActionsListener<TopRatedMoviesFragment> {
+    : BasePresenter<MainActivity>(),
+    MainContract.MainActions {
 
     private var executor: Executor? = null
     private lateinit var pagedList: LiveData<PagedList<Model.MovieItem>>
 
 
-    override fun onAttach(view: TopRatedMoviesFragment) {
+    override fun onAttach(view: MainActivity) {
         super.onAttach(view)
         loadMoviesList()
     }
-
     private fun loadMoviesList() {
 
         executor = Executors.newFixedThreadPool(5)

@@ -11,7 +11,6 @@ import javax.inject.Inject
  * <p>
  * Project Name: MVP_Architecture
  * <p>
- * Blessed Tree IT
  */
 class DataSourceFactory @Inject constructor(private val moviesDataSource: MoviesDataSource) :
     DataSource.Factory<Int, Model.MovieItem>() {

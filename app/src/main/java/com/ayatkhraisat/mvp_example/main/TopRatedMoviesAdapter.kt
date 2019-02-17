@@ -1,8 +1,6 @@
-package com.ayatkhraisat.mvp_example.top_rated
+package com.ayatkhraisat.mvp_example.main
 
 import android.content.Context
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,10 +17,7 @@ import javax.inject.Inject
 
 
 class TopRatedMoviesAdapter @Inject constructor(@ActivityContext val context: Context) :
-    PagedListAdapter<Model.MovieItem,TopRatedMoviesAdapter.ViewHolder>(Model.MovieItem.DIFF_CALLBACK) {
-
-
-    private val  moviesList: ArrayList<Model.MovieItem?> = ArrayList()
+    PagedListAdapter<Model.MovieItem, TopRatedMoviesAdapter.ViewHolder>(Model.MovieItem.DIFF_CALLBACK) {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
