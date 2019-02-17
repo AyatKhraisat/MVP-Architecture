@@ -21,7 +21,7 @@ constructor(
     private val moviesService: MoviesService, private val movieDao: MovieDao,
     private val sharedPreferencesHelper: SharedPreferencesHelper
 ) {
-
+    private val API_KEY = ""
     private val ioExecutor: Executor
 
     init {
@@ -33,7 +33,8 @@ constructor(
 
         Log.d("page_number= ", "$page")
 
-        return moviesService.getTopRatedMovies("a88fdea6e9d79ea3b06d8f065ca3a005", page)
+
+        return moviesService.getTopRatedMovies(API_KEY, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess { (page1, _, results) ->
