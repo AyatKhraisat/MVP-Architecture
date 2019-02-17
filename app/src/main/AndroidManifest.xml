@@ -13,7 +13,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
 
-        <activity android:name="com.ayatkhraisat.mvp_example.main.MainActivity">
+        <activity android:name="com.ayatkhraisat.mvp_example.main.TopRatedMoviesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

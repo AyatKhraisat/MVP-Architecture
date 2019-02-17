@@ -3,7 +3,7 @@ package com.ayatkhraisat.mvp_example.di.components
 
 import com.ayatkhraisat.mvp_example.di.modules.ActivityModule
 import com.ayatkhraisat.mvp_example.di.scopes.ViewScope
-import com.ayatkhraisat.mvp_example.main.MainActivity
+import com.ayatkhraisat.mvp_example.main.TopRatedMoviesActivity
 import dagger.Component
 
 /**
@@ -18,7 +18,7 @@ import dagger.Component
 )
 interface ViewComponent {
 
-    fun inject(mainActivity: MainActivity)
+    fun inject(topRatedMoviesActivity: TopRatedMoviesActivity)
 
 
 }

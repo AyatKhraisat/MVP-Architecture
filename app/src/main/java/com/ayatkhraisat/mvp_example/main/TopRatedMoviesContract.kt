@@ -12,15 +12,15 @@ import com.ayatkhraisat.mvp_example.models.Model
  * <p>
  * Blessed Tree IT
  */
-interface MainContract {
+interface TopRatedMoviesContract {
 
 
-    interface MainView  {
+    interface TopRatedMoviesView  {
         fun showMoviesList(list : PagedList<Model.MovieItem>)
         fun showMoviesDetails()
     }
 
-    interface MainActions {
+    interface TopRatedMoviesActions {
         fun openMovieDetails();
     }
 }

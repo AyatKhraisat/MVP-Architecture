@@ -1,6 +1,5 @@
 package com.ayatkhraisat.mvp_example.main
 
-import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -21,14 +20,14 @@ import javax.inject.Inject
  */
 class TopRatedMoviesPresenter
 @Inject constructor(val moviesDataSource: DataSourceFactory)
-    : BasePresenter<MainActivity>(),
-    MainContract.MainActions {
+    : BasePresenter<TopRatedMoviesActivity>(),
+    TopRatedMoviesContract.TopRatedMoviesActions {
 
     private var executor: Executor? = null
     private lateinit var pagedList: LiveData<PagedList<Model.MovieItem>>
 
 
-    override fun onAttach(view: MainActivity) {
+    override fun onAttach(view: TopRatedMoviesActivity) {
         super.onAttach(view)
         loadMoviesList()
     }
