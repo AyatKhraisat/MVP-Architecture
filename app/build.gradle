@@ -39,7 +39,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "android.arch.navigation:navigation-ui:1.0.0-alpha11"
 
-    //pagging library
+    //paging library
     implementation 'android.arch.paging:runtime:1.0.1'
 
 

@@ -1,7 +1,6 @@
 package com.ayatkhraisat.mvp_example.data
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.ayatkhraisat.mvp_example.models.Model
 import com.ayatkhraisat.mvp_example.network.MoviesService
