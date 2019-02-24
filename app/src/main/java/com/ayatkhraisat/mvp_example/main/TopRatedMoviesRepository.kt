@@ -1,4 +1,4 @@
-package com.ayatkhraisat.mvp_example.top_rated
+package com.ayatkhraisat.mvp_example.main
 
 import android.util.AndroidException
 import android.util.Log
@@ -22,12 +22,7 @@ constructor(
     private val sharedPreferencesHelper: SharedPreferencesHelper
 ) {
     private val API_KEY = ""
-    private val ioExecutor: Executor
 
-    init {
-        ioExecutor = Executors.newCachedThreadPool()
-
-    }
 
     fun getTopRatedMovies(page: Int): Single<Model.MoviesList> {
 
@@ -36,11 +31,13 @@ constructor(
 
         return moviesService.getTopRatedMovies(API_KEY, page)
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .observeOn(Schedulers.io())
             .doOnSuccess { (page1, _, results) ->
-                ioExecutor.execute { movieDao.saveAll(results) }
+               movieDao.saveAll(results)
                 sharedPreferencesHelper.pageNumber = page1!!
             }
+            .observeOn(AndroidSchedulers.mainThread())
+
 
     }
 

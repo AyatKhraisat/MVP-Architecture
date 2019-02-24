@@ -2,18 +2,14 @@ package com.ayatkhraisat.mvp_example.top_rated
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.ayatkhraisat.mvp_example.base.BasePresenter
 import com.ayatkhraisat.mvp_example.data.room.MovieDao
 import com.ayatkhraisat.mvp_example.main.TopRatedMoviesActivity
 import com.ayatkhraisat.mvp_example.main.TopRatedMoviesContract
+import com.ayatkhraisat.mvp_example.main.TopRatedMoviesRepository
 import com.ayatkhraisat.mvp_example.models.Model
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.BiConsumer
-import io.reactivex.functions.Consumer
-import io.reactivex.schedulers.Schedulers
 
 import javax.inject.Inject
 import java.util.concurrent.Executor
@@ -84,7 +80,7 @@ internal constructor(private val topRatedMoviesRepository: TopRatedMoviesReposit
             topRatedMoviesRepository.getTopRatedMovies(index)
                 .subscribe(
                     { Log.d(javaClass.name, "saved to database!") },
-                    { Log.e(javaClass.name, "Something went wrong will saving to database") })
+                    { Log.e(javaClass.name, "Something went wrong $it") })
         )
 
     }
