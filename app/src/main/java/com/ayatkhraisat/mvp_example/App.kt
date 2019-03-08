@@ -9,14 +9,11 @@ import com.ayatkhraisat.mvp_example.di.modules.NetworkModule
 
 class App : Application() {
 
-    lateinit var applicationComponent: ApplicationComponent
-        private set
-
-    override fun onCreate() {
-        super.onCreate()
-        applicationComponent =
-                DaggerApplicationComponent.builder()
-                    .networkModule(NetworkModule("https://api.themoviedb.org/"))
-                    .applicationModule(ApplicationModule(this)).build()
+    val applicationComponent: ApplicationComponent by lazy {
+        DaggerApplicationComponent.builder()
+            .networkModule(NetworkModule("https://api.themoviedb.org/"))
+            .applicationModule(ApplicationModule(this)).build()
     }
+
+
 }
